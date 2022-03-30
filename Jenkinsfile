@@ -8,5 +8,10 @@ node
 	{
     sh 'mvn package'
 	}
+    stage('Continuous Deployment')
+        {
+    sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/Multi-Branch-Job_dev/webapp/target/webapp.war   ubuntu@172.31.42.115:/var/lib/tomcat8/webapps/devenv.war'
+        }
+	
    
 }
